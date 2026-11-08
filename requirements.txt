@@ -1,0 +1,8 @@
+fastapi==0.115.0
+uvicorn==0.30.6
+pydantic==2.9.2
+chromadb==0.5.5
+langchain-text-splitters==0.2.4
+cryptography==43.0.1
+requests==2.32.3
+pytest==8.3.3

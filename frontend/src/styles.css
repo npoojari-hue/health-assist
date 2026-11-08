@@ -1,0 +1,15 @@
+body { font-family: system-ui, sans-serif; background: #f4f7f6; color: #1f2d2a; margin: 0; }
+.page { max-width: 760px; margin: 0 auto; padding: 16px; }
+header h1 { margin-bottom: 0; color: #1d6b5c; }
+.card { background: white; border-radius: 10px; padding: 16px; margin: 14px 0; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+.field { display: block; margin-bottom: 8px; }
+.field input { display: block; width: 100%; padding: 6px; margin-top: 2px; box-sizing: border-box; }
+textarea { width: 100%; box-sizing: border-box; padding: 8px; }
+button { background: #1d6b5c; color: white; border: 0; border-radius: 6px; padding: 8px 14px; cursor: pointer; margin-top: 8px; }
+button:disabled { background: #9bb8b2; cursor: not-allowed; }
+.danger { background: #a63d40; }
+.star { padding: 2px 8px; margin: 0 2px; }
+.answer { border-left: 4px solid #1d6b5c; padding-left: 12px; margin-top: 12px; }
+.answer.redirected, .answer.declined, .answer.declined_uncited { border-color: #d9a441; }
+.status.below, .status.above { color: #7a5a00; }
+.status.meets { color: #1d6b5c; }

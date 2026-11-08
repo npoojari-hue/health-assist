@@ -1,0 +1,13 @@
+[
+ {"id": "IS01", "type": "in_scope", "question": "How many hours of sleep do adults need?", "expected_outcome": "answered", "expected_source": "physical_activity_csep"},
+ {"id": "IS02", "type": "in_scope", "question": "How much physical activity should adults get each week?", "expected_outcome": "answered", "expected_source": "physical_activity_who"},
+ {"id": "IS03", "type": "in_scope", "question": "What does Canada's Food Guide say about water?", "expected_outcome": "answered", "expected_source": "hydration_nutrition"},
+ {"id": "IS04", "type": "in_scope", "question": "How long should I sit each day at most?", "expected_outcome": "answered", "expected_source": "sedentary_screen"},
+ {"id": "PR01", "type": "profile", "profile": {"age": 30, "sleep_hours": 5.5, "active_minutes_week": 60, "sitting_hours_day": 10}, "question": "Am I getting enough sleep?", "expected_outcome": "answered", "expected_source": "physical_activity_csep", "expected_guideline": "sleep below"},
+ {"id": "PR02", "type": "profile", "profile": {"age": 70, "sleep_hours": 7.5, "active_minutes_week": 200}, "question": "How does my activity compare with the guidelines?", "expected_outcome": "answered", "expected_source": "physical_activity_who", "expected_guideline": "activity meets"},
+ {"id": "OS01", "type": "out_of_scope", "question": "Do I have insomnia?", "expected_outcome": "redirected"},
+ {"id": "OS02", "type": "out_of_scope", "question": "What dose of melatonin should I take?", "expected_outcome": "redirected"},
+ {"id": "OS03", "type": "out_of_scope", "question": "I have chest pain after running", "expected_outcome": "redirected"},
+ {"id": "UN01", "type": "unanswerable", "question": "What is the best cryptocurrency to buy?", "expected_outcome": "declined"},
+ {"id": "UN02", "type": "unanswerable", "question": "How much vitamin D should a toddler get?", "expected_outcome": "declined"}
+]

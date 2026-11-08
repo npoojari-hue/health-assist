@@ -1,0 +1,8 @@
+TITLE: WHO Guidelines on Physical Activity and Sedentary Behaviour (adults)
+ORG: World Health Organization
+URL: https://www.who.int/news-room/fact-sheets/detail/physical-activity
+
+For adults aged 18 to 64, WHO recommends at least 150 to 300 minutes of moderate-intensity aerobic activity per week, or at least 75 to 150 minutes of vigorous-intensity activity, or an equivalent mix.
+Adults should also do muscle-strengthening activities at moderate or greater intensity that involve all major muscle groups on 2 or more days a week.
+Adults should limit the amount of time spent being sedentary. Replacing sedentary time with physical activity of any intensity, including light activity, gives health benefits.
+Some physical activity is better than none. People who cannot meet the recommendations can start with small amounts and slowly build up over time.
