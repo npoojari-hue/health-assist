@@ -225,6 +225,5 @@ __pycache__/
 data/*.db
 data/chroma/
 data/secret.key
-evaluation/results/*.csv
 frontend/node_modules/
 frontend/dist/
