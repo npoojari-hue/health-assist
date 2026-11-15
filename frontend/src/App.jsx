@@ -60,10 +60,11 @@ function Chat({ refreshHistory }) {
   const [result, setResult] = useState(null);
   const [busy, setBusy] = useState(false);
   const [rated, setRated] = useState(false);
+  const [model, setModel] = useState("llama3.1:8b");
 
   const send = async () => {
     setBusy(true); setRated(false);
-    try { setResult(await api.askQuestion(text)); refreshHistory(); }
+    try { setResult(await api.askQuestion(text, model)); refreshHistory(); }
     catch (e) { setResult({ answer: e.message, sources: [] }); }
     setBusy(false);
   };
@@ -73,7 +74,13 @@ function Chat({ refreshHistory }) {
     <div className="card">
       <h2>Ask a question</h2>
       <textarea rows="3" value={text} onChange={(e) => setText(e.target.value)} placeholder="e.g. How many hours of sleep do adults need?" />
-      <button disabled={busy || text.length < 3} onClick={send}>{busy ? "Thinking..." : "Ask"}</button>
+      <label className="field">Local model
+        <select value={model} onChange={(e) => setModel(e.target.value)}>
+          <option value="llama3.1:8b">Llama 3.1 8B</option>
+          <option value="gemma2:9b">Gemma 2 9B</option>
+        </select>
+      </label>
+      <button disabled={busy || text.length < 3} onClick={send}>{busy ? "Thinking... (the local model can take a little while)" : "Ask"}</button>
       {result && (
         <div className={`answer ${result.outcome}`}>
           <p style={{ whiteSpace: "pre-wrap" }}>{result.answer}</p>
@@ -128,7 +135,7 @@ export default function App() {
       <header><h1>HealthAssist</h1><small>General wellness information. Not medical advice. In an emergency call 9-1-1.</small></header>
       {!consented ? <ConsentScreen onAccept={accept} /> : (
         <>
-          <ProfileForm profile={profile} onSaved={(r) => { setProfile(r.profile); setComparison(r.comparison); }} />
+          <ProfileForm key={profile ? "saved" : "empty"} profile={profile} onSaved={(r) => { setProfile(r.profile); setComparison(r.comparison); }} />
           <Comparison rows={comparison} />
           <Chat refreshHistory={async () => setHistory(await api.getHistory())} />
           <History items={history} />
