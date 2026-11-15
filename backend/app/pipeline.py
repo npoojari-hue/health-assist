@@ -3,7 +3,7 @@ import re
 import requests
 
 from .guidelines import compare_habits, summary_text
-from .citations import check_citations
+from .citations import check_citations, extract_tags, strip_tags
 from .llm import ask_model
 from .rag import retrieve
 from .safety import check_safety
@@ -30,7 +30,7 @@ def answer_question(question: str, profile: dict = None, model: str = None, use_
         return {"outcome": "redirected", "category": flagged["category"], "answer": flagged["message"],
                 "sources": [], "comparison": [], "passages": []}
 
-    comparison = compare_habits(profile) if profile else []
+    comparison = compare_habits(profile) if profile is not None else []
 
     # 2. retrieval (skipped only for the no-RAG baseline in the evaluation)
     passages = retrieve(question) if use_rag else []
@@ -51,12 +51,12 @@ def answer_question(question: str, profile: dict = None, model: str = None, use_
         return {"outcome": "declined_uncited", "answer": DECLINE_MSG, "sources": [],
                 "comparison": comparison, "passages": passages}
 
-    cited = set(re.findall(r"\[(S\d+)\]", text))
+    cited = extract_tags(text)
     sources, seen = [], set()
     for p in passages:
         if p["sid"] in cited and p["url"] not in seen:
             seen.add(p["url"])
             sources.append({"title": p["title"], "org": p["org"], "url": p["url"], "doc_id": p["doc_id"]})
-    clean = re.sub(r"\s*\[S\d+\]", "", text)
+    clean = strip_tags(text)
     return {"outcome": "answered", "answer": f"{clean}\n\n{DISCLAIMER}", "sources": sources,
             "comparison": comparison, "passages": passages}

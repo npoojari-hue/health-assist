@@ -10,10 +10,10 @@ MEDICAL_MSG = ("I can only share general wellness information about sleep, activ
                "(8-1-1) for free advice. If you think it is an emergency, call 9-1-1.")
 
 PATTERNS = [
-    ("self_harm", SELF_HARM_MSG, r"suicid|kill myself|end my life|hurt myself|self[- ]harm|want to die"),
-    ("emergency", EMERGENCY_MSG, r"chest pain|can'?t breathe|cannot breathe|trouble breathing|heart attack|stroke|overdos|severe bleeding|unconscious|passed out|seizure"),
-    ("medication", MEDICAL_MSG, r"\bdos(e|age)\b|prescri|medication|medicine|antibiotic|ibuprofen|tylenol|acetaminophen|sleeping pill|melatonin|should i take|\bpills?\b"),
-    ("diagnosis", MEDICAL_MSG, r"do i have|diagnos|is it cancer|what disease|what illness|symptoms? of|am i sick"),
+    ("self_harm", SELF_HARM_MSG, r"suicid|kill myself|end my life|hurt myself|self[- ]harm|want to die|ending it all|end it all|can'?t go on|no reason to live|better off dead|take my own life"),
+    ("emergency", EMERGENCY_MSG, r"chest pain|chest (hurts?|is tight|pressure)|coughing (up )?blood|can'?t breathe|cannot breathe|trouble breathing|heart attack|stroke|overdos|severe bleeding|unconscious|passed out|seizure"),
+    ("medication", MEDICAL_MSG, r"\bdos(e|age)\b|prescri|medication|medicine|antidepressant|\bmeds?\b|antibiotic|ibuprofen|tylenol|acetaminophen|sleeping pill|melatonin|should i take|\bpills?\b"),
+    ("diagnosis", MEDICAL_MSG, r"do i have|diagnos|is (it|this) (cancer|a tumou?r)|\blump\b|what disease|what illness|symptoms? of|am i sick"),
     ("treatment", MEDICAL_MSG, r"how (do i|to) (treat|cure)|treatment for|therapy for|cure for"),
 ]
 

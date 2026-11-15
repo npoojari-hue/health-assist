@@ -1,13 +1,18 @@
 # rag.py - builds the vector index from data/knowledge_base and retrieves passages
 import chromadb
+from chromadb.config import Settings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from .config import KB_DIR, CHROMA_DIR, TOP_K, MAX_DISTANCE
 
 
+def get_client():
+    """Local vector store. Chroma's anonymous usage telemetry is switched off so nothing leaves the computer (NFR1)."""
+    return chromadb.PersistentClient(path=str(CHROMA_DIR), settings=Settings(anonymized_telemetry=False))
+
+
 def get_collection():
-    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
-    return client.get_or_create_collection("guidelines", metadata={"hnsw:space": "cosine"})
+    return get_client().get_or_create_collection("guidelines", metadata={"hnsw:space": "cosine"})
 
 
 def read_kb_file(path):
@@ -28,7 +33,7 @@ def read_kb_file(path):
 
 def build_index():
     """Clean -> chunk -> store with source details. Run again whenever the knowledge base changes."""
-    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
+    client = get_client()
     try:
         client.delete_collection("guidelines")
     except Exception:
